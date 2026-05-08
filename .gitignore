@@ -1,0 +1,23 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Spring Boot
+spring-shell.log
+
+# 로컬 설정 (패스워드 포함 가능)
+src/main/resources/application-local.yml
+
+# OS
+.DS_Store
+Thumbs.db
