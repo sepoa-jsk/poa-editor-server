@@ -23,4 +23,9 @@ public interface TemplateFolderRepository extends JpaRepository<TemplateFolder, 
 
     /** 이름으로 존재 여부 확인 */
     boolean existsByName(String name);
+
+    /** 이름 목록으로 폴더 일괄 삭제 */
+    @org.springframework.data.jpa.repository.Modifying
+    @org.springframework.data.jpa.repository.Query("DELETE FROM TemplateFolder f WHERE f.name IN :names")
+    void deleteByNameIn(@org.springframework.data.repository.query.Param("names") List<String> names);
 }

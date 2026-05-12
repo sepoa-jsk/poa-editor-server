@@ -39,6 +39,16 @@ public interface TemplateRepository extends JpaRepository<Template, Long> {
     @Query("DELETE FROM Template t WHERE t.folderId IN :folderIds")
     void deleteByFolderIdIn(@Param("folderIds") List<Long> folderIds);
 
+    /** 이름 목록으로 템플릿 일괄 삭제 */
+    @Modifying
+    @Query("DELETE FROM Template t WHERE t.name IN :names")
+    void deleteByNameIn(@Param("names") List<String> names);
+
+    /** 이름이 특정 접두어로 시작하는 템플릿 일괄 삭제 (LIKE 패턴) */
+    @Modifying
+    @Query("DELETE FROM Template t WHERE t.name LIKE :pattern")
+    void deleteByNameLike(@Param("pattern") String pattern);
+
     /** 폴더 내 실제(비임시) 템플릿 수 */
     int countByFolderIdAndIsTempFalse(Long folderId);
 }
