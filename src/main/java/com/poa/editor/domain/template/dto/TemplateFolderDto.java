@@ -12,9 +12,16 @@ public record TemplateFolderDto(
         int orderIndex,
         String createdBy,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        LocalDateTime updatedAt,
+        int templateCount
 ) {
+    /** templateCount 없이 생성 (생성/수정 응답용) */
     public static TemplateFolderDto from(TemplateFolder folder) {
+        return from(folder, 0);
+    }
+
+    /** templateCount 포함 생성 (목록 조회용) */
+    public static TemplateFolderDto from(TemplateFolder folder, int templateCount) {
         return new TemplateFolderDto(
                 folder.getId(),
                 folder.getParentId(),
@@ -23,7 +30,8 @@ public record TemplateFolderDto(
                 folder.getOrderIndex(),
                 folder.getCreatedBy(),
                 folder.getCreatedAt(),
-                folder.getUpdatedAt()
+                folder.getUpdatedAt(),
+                templateCount
         );
     }
 }

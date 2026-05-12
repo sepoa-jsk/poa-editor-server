@@ -23,7 +23,10 @@ public class TemplateFolderService {
     public List<TemplateFolderDto> getAllFolders(String userId) {
         return folderRepository.findVisibleForUser(userId)
                 .stream()
-                .map(TemplateFolderDto::from)
+                .map(f -> TemplateFolderDto.from(
+                        f,
+                        templateRepository.countByFolderIdAndIsTempFalse(f.getId())
+                ))
                 .toList();
     }
 
