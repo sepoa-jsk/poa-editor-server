@@ -59,6 +59,7 @@
                         <type>standalone</type>
                         <properties>
                             <cargo.servlet.port>8080</cargo.servlet.port>
+                            <cargo.rmi.port>8206</cargo.rmi.port>
                             <cargo.servlet.uriencoding>UTF-8</cargo.servlet.uriencoding>
                         </properties>
                     </configuration>
